@@ -31,13 +31,12 @@ function TopMusic({code}) {
     })
   }, [accessToken])
 
-  console.log(tracks)
 
   return ( 
     <div>
       {tracks.map((item , index) => (
         <div key={index}>
-          <img src={item.img} alt="image " />
+          <img src={item.img} alt="image " width={"222"} height={"150"} />
           <div>
             <h2>
               {tracks.trackName }
