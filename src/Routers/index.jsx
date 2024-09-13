@@ -1,17 +1,22 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-import {Home,LikedSongs,SingleSongs} from '../pages'
-
-function CustomRouters() {
+import Dashboard from '../pages/Dashboard/Dashboard'
+import Likes from '../pages/Dashboard/Likes'
+import Playlist from '../pages/Dashboard/Playlist'
+import Aside from '../components/Aside'
+import Panel from '../components/Panel'
+function CustomRoutes({ code }) {
   return (
-    <div className='col-span-8 h-screen overflow-y-auto bg-rose-500'>
+    <div className="grid grid-cols-12">
+      <Aside />
       <Routes>
-        <Route path='/' element={<Home/>} />
-        <Route path='/single-songs/:id' element={<SingleSongs/>} />
-        <Route path='/liked-songs' element={<LikedSongs/>} />
+        <Route path="/" element={<Dashboard code={code} />} />
+        <Route path="/likes" element={<Likes />} />
+        <Route path="/playlist" element={<Playlist />} />
       </Routes>
+      <Panel />
     </div>
   )
 }
 
-export default CustomRouters
+export default CustomRoutes

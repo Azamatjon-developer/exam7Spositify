@@ -1,10 +1,19 @@
-import { useState } from 'react'
-import { useAxios } from './useAxios'
+import { useEffect, useState } from 'react'
+import { useAxios } from '../hooks/useAxios'
 
 export const useAuth = (code) => {
   const [accessToken, setAccessToken] = useState('')
-    useAxios().post("/login", {code}).then(res => {
-        console.log(res)
-    })
+  useEffect(() => {
+    if (code) {
+      useAxios()
+        .post('/login', { code })
+        .then((res) => {
+          setAccessToken(res.data.accessToken)
+        })
+        .catch((err) => {
+          window.location = '/'
+        })
+    }
+  }, [code])
   return accessToken
 }
