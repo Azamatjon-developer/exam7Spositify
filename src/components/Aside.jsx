@@ -4,8 +4,8 @@ import { CiHome } from 'react-icons/ci'
 function Aside() {
   return (
     <div className=" col-span-2 h-[100vh] bg-black text-white">
-      <ul>
-        <NavLink>
+      <ul className='mt-[20px]'>
+        <NavLink className={"flex flex-col gap-5 "}>
           <div className='flex items-center  gap-[10px]'>
             <CiHome className='scale-125 text-[18px]' /> Home 
           </div>

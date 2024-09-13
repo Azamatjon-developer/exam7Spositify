@@ -1,21 +1,24 @@
 import React, { useState } from 'react'
 import { Input } from 'antd'
-import TopMusic from '../../components/TopMusic/TopMusic'
+import TopMusic from '../../components/TopMusic'
 
 function Dashboard({ code }) {
   const [title, setTitle] = useState('')
 
   return (
-    <div className="col-span-8 overflow-y-auto h-screen">
+    <div className="col-span-8 overflow-y-auto h-screen ">
       <Input
-        className="w-[400px] p-2 text-[18px]"
+        className="w-[400px] mx-auto p-2 text-[18px]"
         type="text"
         placeholder="Searching"
         onChange={(e) => setTitle(e.target.value)}
         value={title}
       />
+
       <TopMusic code={code} />
-      <h2 className=" text-[39px]">Good afternoon</h2>
+      <TopMusic />
+      <TopMusic />
+
     </div>
   )
 }
