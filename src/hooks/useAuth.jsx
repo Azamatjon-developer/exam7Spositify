@@ -3,6 +3,7 @@ import { useAxios } from '../hooks/useAxios'
 
 export const useAuth = (code) => {
   const [accessToken, setAccessToken] = useState('')
+  
   useEffect(() => {
     if (code) {
       useAxios()
