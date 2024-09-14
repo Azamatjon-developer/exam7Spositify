@@ -3,21 +3,23 @@ import SpotifyWebApi from 'spotify-web-api-node'
 import { useAuth } from '../hooks/useAuth'
 import { CLIENT_ID } from '../hooks/useEnv'
 
-function TopMusic({ code }) {
+function TopMusic({ code, searchText, partTitle }) {
+  const [show, setShow] = useState(4)
+
   const accessToken = useAuth(code)
   const spotifyApi = new SpotifyWebApi({
     clientId: CLIENT_ID,
   })
-  
+
   useEffect(() => {
     if (!accessToken) return
     spotifyApi.setAccessToken(accessToken)
-  }, [accessToken])
+  }, [accessToken, searchText])
 
   const [tracks, setTracks] = useState([])
 
   useEffect(() => {
-    spotifyApi.searchTracks('Xamdam Sobirov').then((res) => {
+    spotifyApi.searchTracks(searchText).then((res) => {
       setTracks(
         res.body.tracks.items.map((item) => {
           const data = {
@@ -31,22 +33,67 @@ function TopMusic({ code }) {
       )
     })
   }, [accessToken])
-
   return (
-    <div className="grid grid-cols-1 gap-8 p-8 md:grid-cols-2 lg:grid-cols-4">
-      {tracks.map((item, index) => (
-        <div
-          className="bg-gray-900 text-white rounded-lg shadow-lg hover:scale-110 transition transform duration-300 cursor-pointer"
-          key={index}
+    <>
+      <div className="flex items-center justify-between px-[42px] pt-[50px]">
+        <h2 className="font-bold text-white text-[30px]">{partTitle}</h2>
+        <button
+          className="text-[#ADADAD] font-bold text-[16px]"
+          onClick={() => setShow(0)}
         >
-          <img src={item.img} alt={item.trackName} className="rounded-t-lg w-full h-56 object-cover" />
-          <div className="p-4">
-            <h2 className="text-lg font-bold truncate">{item.trackName}</h2>
-            <p className="text-sm font-medium text-gray-400">{item.artistName}</p>
-          </div>
-        </div>
-      ))}
-    </div>
+          {' '}
+          SEE ALL{' '}
+        </button>
+      </div>
+
+      <div className="flex gap-5 overflow-x-auto p-5">
+        {show === 4
+          ? tracks.slice(0, show).map((item, index) => (
+              <div
+                className="min-w-[224px] card-bg p-5 rounded-lg shadow-lg hover:scale-110 transition transform duration-300 cursor-pointer"
+                key={index}
+              >
+                <img
+                  src={item.img}
+                  alt={item.trackName}
+                  className="mb-[25px] rounded-[8px]"
+                  width={'182px'}
+                  height={'182px'}
+                />
+                <div className="flex flex-col">
+                  <h2 className="text-[20px] tracking-tight font-bold text-white line-clamp-1 mb-[8px]">
+                    {item.trackName}
+                  </h2>
+                  <p className="text-sm font-medium text-gray-400">
+                    {item.artistName}
+                  </p>
+                </div>
+              </div>
+            ))
+          : tracks.map((item, index) => (
+              <div
+                className="min-w-[224px] card-bg p-5 rounded-lg shadow-lg hover:scale-110 transition transform duration-300 cursor-pointer"
+                key={index}
+              >
+                <img
+                  src={item.img}
+                  alt={item.trackName}
+                  className="mb-[25px] rounded-[8px]"
+                  width={'182px'}
+                  height={'182px'}
+                />
+                <div className="flex flex-col">
+                  <h2 className="text-[20px] tracking-tight font-bold text-white line-clamp-1 mb-[8px]">
+                    {item.trackName}
+                  </h2>
+                  <p className="text-sm font-medium text-gray-400">
+                    {item.artistName}
+                  </p>
+                </div>
+              </div>
+            ))}
+      </div>
+    </>
   )
 }
 

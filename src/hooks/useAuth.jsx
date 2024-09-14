@@ -14,6 +14,6 @@ export const useAuth = (code) => {
           window.location = '/'
         })
     }
-  }, [code])
+  }, [])
   return accessToken
 }

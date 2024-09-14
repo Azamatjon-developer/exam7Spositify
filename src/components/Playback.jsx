@@ -1,9 +1,17 @@
 import React from 'react'
-
-function Playback() {
+import SpotifyWebPlayer from 'react-spotify-web-playback'
+function Playback({accessToken , play,setPlaying}) {
   return (
     <div>
-      <h2>Play Back </h2>
+      <SpotifyWebPlayer 
+      token={accessToken}
+      uris={play ? [play] : []} 
+      callback={(e) => {
+        if (e.isPlaying) {
+          setPlaying(false)
+        }
+      }}  
+      />
     </div>
   )
 }
