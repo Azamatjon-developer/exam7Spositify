@@ -9,3 +9,20 @@ body {
 ::-webkit-scrollbar {
     display: none !important; 
 }
+
+
+.nav-link-active {
+    background: #1db954; /* Spotify green */
+    color: white;
+}
+
+
+.nav-link-inactive {
+    background: transparent;
+    color: #b3b3b3;
+}
+
+.nav-link-inactive:hover {
+    background: #333;
+    color: white;
+}
