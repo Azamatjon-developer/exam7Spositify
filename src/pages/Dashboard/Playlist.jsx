@@ -68,39 +68,47 @@ function Playlist() {
             {artistMusics.length > 0 ? (
               artistMusics.map((item, index) => (
                 <div
-                  key={item.id}
-                  className="contents hover:bg-[#1f1f1f] transition-colors duration-200 py-5"
-                >
-                  <div className="col-span-1 text-gray-400">{index + 1}</div>
-                  <div className="col-span-5 flex items-center gap-4 text-white">
-                    <img
-                      src={item.album.images[0]?.url}
-                      alt={item.name}
-                      className="w-[50px] h-[50px] rounded-md"
-                    />
-                    <div>
-                      <p className="font-medium">{item.name}</p>
-                      <p className="text-sm text-gray-400">
-                        {item.artists[0]?.name}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="col-span-3 text-gray-400">
-                    {item.album.name}
-                  </div>
-
-                  <div className="col-span-2 text-gray-400">3:25</div>
-
-                  <div className="col-span-1 text-right" onClick={() =>dispatch(toggleEvent(item))}> 
-                    {
-                      wishlist?.some(s => s.id === item.id) ?    <FaHeart className="scale-150 text-[#63CF6C] " /> 
-                      :
-                      <CiHeart  className="scale-150 " />
-                    }
-                   
+                key={item.id}
+                className="contents hover:bg-[#282828] duration-300 transition-transform rounded-xl py-3 hover:shadow-lg"
+              >
+                <div className="col-span-1 text-gray-400">{index + 1}</div>
+              
+                <div className="col-span-5 text-white flex items-center gap-4">
+                  <img
+                    src={item.album.images[0]?.url}
+                    alt={item.name}
+                    className="w-[50px] h-[50px] rounded-md transition-transform duration-300 hover:scale-105"
+                  />
+                  <div>
+                    <p className="font-medium hover:text-[#1DB954] transition-colors duration-300">
+                      {item.name}
+                    </p>
+                    <p className="text-sm text-gray-400 hover:text-[#1DB954] transition-colors duration-300">
+                      {item.artists[0]?.name}
+                    </p>
                   </div>
                 </div>
+              
+                <div className="col-span-3 text-gray-400 hover:text-[#1DB954] transition-colors duration-300">
+                  {item.album.name}
+                </div>
+              
+                <div className="col-span-2 text-gray-400 hover:text-[#1DB954] transition-colors duration-300">
+                  3:25
+                </div>
+              
+                <div
+                  className="col-span-1 text-right cursor-pointer"
+                  onClick={() => dispatch(toggleEvent(item))}
+                >
+                  {wishlist?.some(s => s.id === item.id) ? (
+                    <FaHeart className="scale-150 text-[#63CF6C] hover:text-[#1DB954] transition-colors duration-300" />
+                  ) : (
+                    <CiHeart className="scale-150 text-gray-400 hover:text-[#1DB954] transition-colors duration-300" />
+                  )}
+                </div>
+              </div>
+              
               ))
             ) : (
               <p className="col-span-12 text-center text-gray-400 mt-6">

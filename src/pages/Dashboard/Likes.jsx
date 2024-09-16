@@ -14,7 +14,6 @@ function Likes() {
       id="likes"
       className="col-span-8 h-screen overflow-y-auto bg-gradient-to-b from-[#181818] to-[#121212] text-white p-[30px]"
     >
-      {/* Header Section */}
       <div className="flex items-center gap-10 mb-[32px]">
         <img
           src={Heart}
