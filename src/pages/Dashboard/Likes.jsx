@@ -25,7 +25,7 @@ function Likes() {
           <p className="text-xs tracking-wide text-gray-300 mb-2 uppercase">
             Public <br /> Playlist
           </p>
-          <h2 className="text-6xl font-extrabold text-white mb-2 hover:text-[#1DB954] transition-colors duration-300">
+          <h2 className="text-6xl font-extrabold text-[] mb-2 hover:text-[#1DB954] transition-colors duration-300">
             Liked Songs
           </h2>
           <div className="flex items-center gap-4 mt-[12px]">
@@ -43,7 +43,6 @@ function Likes() {
 
       <PlaylistLike />
 
-      {/* Table Headers */}
       <div className="mt-8 grid grid-cols-12 gap-4 text-[#B3B3B3] text-sm border-b border-gray-900 pb-2 uppercase font-semibold">
         <div className="col-span-1">#</div>
         <div className="col-span-5">Title</div>
@@ -54,18 +53,15 @@ function Likes() {
         </div>
       </div>
 
-      {/* Song List */}
       <div className="">
         {wishlist?.length > 0 ? (
           wishlist.map((item, index) => (
             <div
               key={item.id}
-              className="grid grid-cols-12 gap-4 items-center py-4 hover:bg-[#1e4552] transition-all duration-300 ease-in-out rounded-xl px-2"
+              className="grid grid-cols-12 gap-4 items-center py-4 hover:bg-[#5d3cbd] transition-all duration-300 ease-in-out rounded-xl px-2"
             >
-              {/* Song Number */}
               <div className="col-span-1 text-gray-400">{index + 1}</div>
 
-              {/* Song Info */}
               <div className="col-span-5 flex items-center gap-4">
                 <img
                   src={item.album.images[1]?.url || item.album.images[0]?.url}
@@ -82,14 +78,11 @@ function Likes() {
                 </div>
               </div>
 
-              {/* Album Info */}
               <div className="col-span-3 text-gray-400">{item.album.name}</div>
 
-              {/* Date Added */}
               <div className="col-span-2  text-white">{item.album.release_date}</div>
 
-              {/* Like Icon */}
-              <div className="col-span-1 text-right flex items-center justify-end gap-2 text-center">
+              <div className="col-span-1 text-right flex items-center justify-end gap-2">
                 <FaHeart className="text-[#63CF6C] hover:text-red-500 transition-colors duration-300 cursor-pointer scale-125" />
               </div>
             </div>
