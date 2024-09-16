@@ -17,3 +17,8 @@ body {
 section#playlist {
   background: linear-gradient(180deg, #def628 4.09%, #121212 46.28%);
 }
+
+#likes{
+  background: linear-gradient(180deg, #604EC1 10.09%, #121212 54.28%);
+
+}

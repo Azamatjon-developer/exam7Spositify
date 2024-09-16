@@ -52,14 +52,14 @@ function Dashboard({ code }) {
         accessToken={accessToken}
         setPlay={setPlay}
         partTitle={'Jump back in'}
-        searchText={'Shoxrux'}
+        searchText={'Bojalar '}
       />
       <TopMusic
         setPlaying={setPlaying}
         accessToken={accessToken}
         setPlay={setPlay}
         partTitle={'Uniquely yours'}
-        searchText={'Billie Eilish '}
+        searchText={'Shoxrux'}
       />
       <Playback
         accessToken={accessToken}

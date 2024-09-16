@@ -11,7 +11,7 @@
     return (
       <div className="col-span-2 h-screen overflow-y-auto bg-black">
         <ul className="mt-[70px] px-[22px]">
-            <NavLink>
+            <NavLink to={"/"}>
               <div className='flex items-center gap-4 text-white  font-bold mb-[20px] '>
                 <img src={asideHome} alt="asideHomeImg" />
                 <p className='text-18px leading-6'>Home</p>
