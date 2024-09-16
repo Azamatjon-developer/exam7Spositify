@@ -37,7 +37,6 @@ function TopMusic({ searchText, partTitle, setPlay, accessToken, setPlaying }) {
   }
   const [show, setShow] = useState(4)
   const navigate = useNavigate()
-
   return (
     <>
       <div className="flex items-center justify-between px-[42px] pt-[50px]">

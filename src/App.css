@@ -14,7 +14,6 @@ body {
   background: black !important;
 }
 
-section#playlist{
-    background: linear-gradient(180deg, #DEF628 5.09%, #121212 43.28%);
-    
+section#playlist {
+  background: linear-gradient(180deg, #def628 4.09%, #121212 46.28%);
 }
