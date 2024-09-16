@@ -1,28 +1,20 @@
 body {
-    background: linear-gradient(180deg, #3333A3 0.4%, #121212 33.4%);
+  background: linear-gradient(180deg, #3333a3 0.4%, #121212 33.4%);
 }
 
 .card-bg {
-    background-color: rgba(255, 255, 255, 0.04) !important;
+  background-color: rgba(255, 255, 255, 0.04) !important;
 }
 
 ::-webkit-scrollbar {
-    display: none !important; 
+  display: none !important;
 }
 
-
-.nav-link-active {
-    background: #1db954; /* Spotify green */
-    color: white;
+.PlayerRSWP {
+  background: black !important;
 }
 
-
-.nav-link-inactive {
-    background: transparent;
-    color: #b3b3b3;
-}
-
-.nav-link-inactive:hover {
-    background: #333;
-    color: white;
+section#playlist{
+    background: linear-gradient(180deg, #DEF628 5.09%, #121212 43.28%);
+    
 }

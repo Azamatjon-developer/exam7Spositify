@@ -9,7 +9,7 @@
 
   function Aside() {
     return (
-      <div className="col-span-2 h-full bg-black">
+      <div className="col-span-2 h-screen overflow-y-auto bg-black">
         <ul className="mt-[70px] px-[22px]">
             <NavLink>
               <div className='flex items-center gap-4 text-white  font-bold mb-[20px] '>
@@ -35,7 +35,7 @@
                 <p className='text-18px leading-6'>Create Playlist</p>
               </div>
             </NavLink>
-            <NavLink>
+            <NavLink to={"/likes"}>
               <div className='flex items-center gap-4 text-white  font-bold mb-[20px] '>
                 <img src={asideLiked} alt="asideHomeImg" />
                 <p className='text-18px leading-6'>Liked Songs</p>

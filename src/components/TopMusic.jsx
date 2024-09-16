@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import SpotifyWebApi from 'spotify-web-api-node'
 import { CLIENT_ID } from '../hooks/useEnv'
+import { useNavigate } from 'react-router-dom';
 function TopMusic({ searchText, partTitle, setPlay, accessToken, setPlaying }) {
   const spotifyApi = new SpotifyWebApi({
     clientId: CLIENT_ID,
@@ -12,6 +13,7 @@ function TopMusic({ searchText, partTitle, setPlay, accessToken, setPlaying }) {
   }, [accessToken, searchText]);
 
   const [tracks, setTracks] = useState([])
+  
 
   useEffect(() => {
     spotifyApi.searchTracks(searchText).then((res) => {
@@ -22,6 +24,7 @@ function TopMusic({ searchText, partTitle, setPlay, accessToken, setPlaying }) {
             trackName: item.name,
             uri: item.uri,
           }
+          
           return data
         }),
       )
@@ -33,7 +36,7 @@ function TopMusic({ searchText, partTitle, setPlay, accessToken, setPlaying }) {
     setPlaying(true)
   }
   const [show, setShow] = useState(4)
-
+  const navigate = useNavigate()
 
   return (
     <>
@@ -41,7 +44,7 @@ function TopMusic({ searchText, partTitle, setPlay, accessToken, setPlaying }) {
         <h2 className="font-bold text-white text-[30px]">{partTitle}</h2>
         <button
           className="text-[#ADADAD] font-bold text-[16px]"
-          onClick={() => setShow(show === 4 ? tracks.length : 4)} // Toggle between 4 and all
+          onClick={() => setShow(show === 4 ? tracks.length : 4)} 
         >
           {show === 4 ? 'SEE ALL' : 'SHOW LESS'}
         </button>
@@ -50,7 +53,10 @@ function TopMusic({ searchText, partTitle, setPlay, accessToken, setPlaying }) {
       <div className="flex gap-5 overflow-x-auto p-5">
         {tracks.slice(0, show).map((item, index) => (
           <div
-            onClick={() => handlePlayMusic(item)}
+            onClick={() => {
+              handlePlayMusic(item)
+              navigate('/playlist', { state: { track: item } });
+            }}
             className="min-w-[224px] card-bg p-5 rounded-lg shadow-lg hover:scale-110 transition transform duration-300 cursor-pointer"
             key={index}
           >

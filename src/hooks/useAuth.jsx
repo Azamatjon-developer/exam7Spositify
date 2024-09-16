@@ -12,9 +12,11 @@ export const useAuth = (code) => {
           setAccessToken(res.data.accessToken)
         })
         .catch((err) => {
-          // window.location = '/'
+          window.location = '/'
         })
     }
   }, [])
   return accessToken
 }
+
+
