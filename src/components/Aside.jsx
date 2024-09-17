@@ -17,7 +17,7 @@
                 <p className='text-18px leading-6'>Home</p>
               </div>
             </NavLink>
-            <NavLink>
+            <NavLink to={"/search"}>
               <div className='flex items-center gap-4 text-white  font-bold mb-[20px] '>
                 <img src={asideSearch} alt="asideHomeImg" />
                 <p className='text-18px leading-6'>Search</p>

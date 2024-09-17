@@ -1,36 +1,47 @@
 import React, { useEffect, useState } from 'react'
 import SpotifyWebApi from 'spotify-web-api-node'
 import { CLIENT_ID } from '../hooks/useEnv'
-import { useNavigate } from 'react-router-dom';
-function TopMusic({ searchText, partTitle, setPlay, accessToken, setPlaying }) {
+import { useNavigate } from 'react-router-dom'
+function TopMusic({
+  defaultValue,
+  searchText,
+  partTitle,
+  setPlay,
+  accessToken,
+  setPlaying,
+}) {
+
   const spotifyApi = new SpotifyWebApi({
     clientId: CLIENT_ID,
   })
 
   useEffect(() => {
-    if (!accessToken) return;
-    spotifyApi.setAccessToken(accessToken);
-  }, [accessToken, searchText]);
+    if (!accessToken) return
+    spotifyApi.setAccessToken(accessToken && accessToken)
+  }, [accessToken, searchText])
 
   const [tracks, setTracks] = useState([])
-  
 
   useEffect(() => {
-    spotifyApi.searchTracks(searchText).then((res) => {
-      setTracks(res.body.tracks.items.map((item) => {
-          const data = {
-            img: item.album.images[0].url,
-            artistName: item.artists[0].name,
-            trackName: item.name,
-            uri: item.uri,
-          }
-          
-          return data
-        }),
-      )
-    })
+    spotifyApi
+      .searchTracks(searchText.length > 0 ? searchText : defaultValue)
+      .then((res) => {
+        setTracks(
+          res.body.tracks.items.map((item) => {
+            console.log(res)
 
-  }, [accessToken, searchText])
+            const data = {
+              img: item.album.images[0].url,
+              artistName: item.artists[0].name,
+              trackName: item.name,
+              uri: item.uri,
+            }
+
+            return data
+          }),
+        )
+      })
+  }, [accessToken, searchText, defaultValue])
   function handlePlayMusic(item) {
     setPlay(item.uri)
     setPlaying(true)
@@ -43,7 +54,7 @@ function TopMusic({ searchText, partTitle, setPlay, accessToken, setPlaying }) {
         <h2 className="font-bold text-white text-[30px]">{partTitle}</h2>
         <button
           className="text-[#ADADAD] font-bold text-[16px]"
-          onClick={() => setShow(show === 4 ? tracks.length : 4)} 
+          onClick={() => setShow(show === 4 ? tracks.length : 4)}
         >
           {show === 4 ? 'SEE ALL' : 'SHOW LESS'}
         </button>
@@ -54,7 +65,7 @@ function TopMusic({ searchText, partTitle, setPlay, accessToken, setPlaying }) {
           <div
             onClick={() => {
               handlePlayMusic(item)
-              navigate('/playlist', { state: { track: item } });
+              navigate('/playlist', { state: { track: item } })
             }}
             className="min-w-[224px] card-bg p-5 rounded-lg shadow-lg hover:scale-110 transition transform duration-300 cursor-pointer"
             key={index}

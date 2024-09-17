@@ -13,6 +13,9 @@ function Dashboard({ code }) {
     clientId: CLIENT_ID,
   })
 
+  console.log(code);
+  
+
   useEffect(() => {
     if (!accessToken) return
     spotifyApi.setAccessToken(accessToken)
@@ -27,39 +30,45 @@ function Dashboard({ code }) {
     <div className=''>
       <CardList />
       <TopMusic
+
         setPlaying={setPlaying}
         accessToken={accessToken}
         setPlay={setPlay}
         partTitle={'Your top mixes'}
-        searchText={'Ummon'}
+        defaultValue={'Billie Eilish'}
+        searchText={""}
       />
       <TopMusic
         setPlaying={setPlaying}
         accessToken={accessToken}
         setPlay={setPlay}
         partTitle={'Made for you'}
-        searchText={'Xamdam Sobirov'}
+        defaultValue={'Xamdam Sobirov'}
+        searchText={""}
       />
       <TopMusic
         setPlaying={setPlaying}
         accessToken={accessToken}
         setPlay={setPlay}
         partTitle={'Recently played'}
-        searchText={'Doston Ergashev'}
+        defaultValue={'Doston Ergashev'}
+        searchText={""}
       />
       <TopMusic
         setPlaying={setPlaying}
         accessToken={accessToken}
         setPlay={setPlay}
         partTitle={'Jump back in'}
-        searchText={'Bojalar '}
+        defaultValue={'Shoxrux '}
+        searchText={""}
       />
       <TopMusic
         setPlaying={setPlaying}
         accessToken={accessToken}
         setPlay={setPlay}
         partTitle={'Uniquely yours'}
-        searchText={'Shoxrux'}
+        defaultValue={'Yulduz Usmonova'}
+        searchText={""}
       />
       <Playback
         accessToken={accessToken}
@@ -67,7 +76,6 @@ function Dashboard({ code }) {
         setPlaying={setPlaying}
         play={play}
       />
-
     </div>
 
     </div>
