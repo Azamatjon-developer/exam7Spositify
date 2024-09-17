@@ -7,7 +7,7 @@ import { CLIENT_ID } from '../../hooks/useEnv'
 import CardList from '../../components/CardList'
 function Dashboard({ accessToken }) {
   const [play, setPlay] = useState([])
-  const [playing, setPlaying = { setPlaying }] = useState(false)
+  const [playing, setPlaying] = useState(false)
   
   const spotifyApi = new SpotifyWebApi({
     clientId: CLIENT_ID,

@@ -32,7 +32,7 @@ function CustomRoutes({ code }) {
             element={<Search accessToken={accessToken} />}
           />
         </Routes>
-        <Playback accessToken={accessToken} />
+        <Playback  accessToken={accessToken} />
       </main>
       <Panel />
     </div>
