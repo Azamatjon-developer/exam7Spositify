@@ -5,9 +5,8 @@ import { useAuth } from '../../hooks/useAuth'
 import SpotifyWebApi from 'spotify-web-api-node'
 import { CLIENT_ID } from '../../hooks/useEnv'
 import CardList from '../../components/CardList'
-function Dashboard({ accessToken }) {
-  const [play, setPlay] = useState([])
-  const [playing, setPlaying] = useState(false)
+function Dashboard({ accessToken, setPlay, setPlaying }) {
+  
   
   const spotifyApi = new SpotifyWebApi({
     clientId: CLIENT_ID,

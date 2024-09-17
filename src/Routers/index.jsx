@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Dashboard from '../pages/Dashboard/Dashboard'
 import Likes from '../pages/Dashboard/Likes'
@@ -11,6 +11,8 @@ import SpotifyWebApi from 'spotify-web-api-node'
 import { useAuth } from '../hooks/useAuth'
 import Playback from '../components/Playback'
 function CustomRoutes({ code }) {
+  const [play, setPlay] = useState([])
+  const [playing, setPlaying] = useState(false)
   const spotifyApi = new SpotifyWebApi({
     clientId: CLIENT_ID,
   })
@@ -24,7 +26,7 @@ function CustomRoutes({ code }) {
       <Aside />
       <main className="col-span-8">
         <Routes>
-          <Route path="/" element={<Dashboard accessToken={accessToken} />} />
+          <Route path="/" element={<Dashboard setPlay={setPlay} setPlaying={setPlaying} accessToken={accessToken} />} />
           <Route path="/likes" element={<Likes />} />
           <Route path="/playlist" element={<Playlist />} />
           <Route
@@ -32,7 +34,7 @@ function CustomRoutes({ code }) {
             element={<Search accessToken={accessToken} />}
           />
         </Routes>
-        <Playback  accessToken={accessToken} />
+        <Playback play={play} playing={playing} setPlaying={setPlaying}  accessToken={accessToken} />
       </main>
       <Panel />
     </div>
