@@ -5,15 +5,14 @@ import { useAuth } from '../../hooks/useAuth'
 import SpotifyWebApi from 'spotify-web-api-node'
 import { CLIENT_ID } from '../../hooks/useEnv'
 import CardList from '../../components/CardList'
-function Dashboard({ code }) {
+function Dashboard({ accessToken }) {
   const [play, setPlay] = useState([])
   const [playing, setPlaying = { setPlaying }] = useState(false)
-  const accessToken = useAuth(code)
+  
   const spotifyApi = new SpotifyWebApi({
     clientId: CLIENT_ID,
   })
 
-  console.log(code);
   
 
   useEffect(() => {
@@ -59,7 +58,7 @@ function Dashboard({ code }) {
         accessToken={accessToken}
         setPlay={setPlay}
         partTitle={'Jump back in'}
-        defaultValue={'Shoxrux '}
+        defaultValue={'Billie Eilish '}
         searchText={""}
       />
       <TopMusic
@@ -70,12 +69,7 @@ function Dashboard({ code }) {
         defaultValue={'Yulduz Usmonova'}
         searchText={""}
       />
-      <Playback
-        accessToken={accessToken}
-        playing={playing}
-        setPlaying={setPlaying}
-        play={play}
-      />
+
     </div>
 
     </div>

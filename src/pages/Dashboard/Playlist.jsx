@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import SpotifyWebApi from 'spotify-web-api-node'
 import PlaylistLike from '../../components/playlistLike'
 import { ClockIcon } from '../../assets/Images/Icons'
@@ -7,14 +7,11 @@ import { CiHeart } from 'react-icons/ci'
 import { useDispatch, useSelector } from 'react-redux'
 import { toggleEvent } from '../../Redux/Wishlist'
 import { FaHeart } from 'react-icons/fa'
-import Playback from '../../components/Playback'
-
 function Playlist() {
   const location = useLocation()
   const spotifyApi = new SpotifyWebApi()
   const track = location.state?.track
   const [artistMusics, setArtistMusic] = useState([])
-  const navigate = useNavigate()
   const dispatch = useDispatch()
   const wishlist = useSelector((s) => s.heart.value)
   useEffect(() => {
@@ -23,7 +20,6 @@ function Playlist() {
       .searchTracks(track.artistName)
       .then((res) => setArtistMusic(res.body.tracks.items))
   }, [track])
-
   return (
     <section
       id="playlist"
@@ -125,5 +121,4 @@ function Playlist() {
     </section>
   )
 }
-
 export default Playlist

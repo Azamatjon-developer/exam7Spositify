@@ -8,7 +8,6 @@ import { FaHeart } from 'react-icons/fa'
 
 function Likes() {
   const wishlist = useSelector((s) => s.heart.value)
-  console.log(wishlist)
   return (
     <div
       id="likes"

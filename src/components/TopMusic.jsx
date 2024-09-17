@@ -28,8 +28,6 @@ function TopMusic({
       .then((res) => {
         setTracks(
           res.body.tracks.items.map((item) => {
-            console.log(res)
-
             const data = {
               img: item.album.images[0].url,
               artistName: item.artists[0].name,
